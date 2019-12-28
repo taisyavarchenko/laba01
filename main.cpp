@@ -19,7 +19,6 @@ int main() {
 		cout << "5. Quit" << endl;
 		cout << ">";
 		cin >> item; // считываем пункт меню
-		cin.ignore();
 
 		try {
 			// обрабатываем некорректный ввод
@@ -29,9 +28,13 @@ int main() {
 
 			// в зависимости от выбранного пункта выполняем действие
 			switch (item) {
-			case 1:
-				group.AddStudent();
-				break;
+			case 1: {
+				STUDENT student;
+				cout << "Enter information about new student" << endl;
+				cin >> student; // считыванием студента
+				group.AddStudent(student);
+			}
+					break;
 
 			case 2:
 				group.RemoveStudent();
