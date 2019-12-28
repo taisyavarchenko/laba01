@@ -6,11 +6,13 @@
 
 using namespace std;
 
+const int scoresCount = 5;
+
 // класс студент
 class STUDENT {
 	string name; // фаимилия и инициалы
 	int group; // группа
-	int scores[5]; // оценки
+	int scores[scoresCount]; // оценки
 
 public:
 	STUDENT(); // конструктор по умолчанию
