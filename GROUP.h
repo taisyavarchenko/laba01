@@ -16,7 +16,7 @@ public:
 
 	GROUP& operator=(const GROUP& group); // оператор присваивания
 	void Sort(); // сортировка по номеру группы
-	void AddStudent(); // добавление студента
+	void AddStudent(const STUDENT& student); // добавление студента
 	void RemoveStudent(); // удаление студенту
 	void PrintByKey(); // вывод тех, у кого балл выше 4
 
