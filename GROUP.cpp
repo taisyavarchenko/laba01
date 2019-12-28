@@ -50,11 +50,7 @@ GROUP& GROUP::operator=(const GROUP & group) {
 }
 
 // добавление студента
-void GROUP::AddStudent() {
-	STUDENT student;
-	cout << "Enter information about new student" << endl;
-	cin >> student; // считыванием студента
-
+void GROUP::AddStudent(const STUDENT & student) {
 	students[size++] = student; // записываем его в массив
 	cout << endl << "Student has been added" << endl;
 	Sort(); // сортируем по группе
