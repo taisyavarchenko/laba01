@@ -8,7 +8,7 @@ STUDENT::STUDENT() {
 	name = "tmp";
 	group = 1;
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < scoresCount; i++)
 		scores[i] = 5;
 }
 
@@ -18,7 +18,7 @@ STUDENT::STUDENT(const STUDENT & student) {
 	name = student.name;
 	group = student.group;
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < scoresCount; i++)
 		scores[i] = student.scores[i];
 }
 
@@ -28,7 +28,7 @@ STUDENT::STUDENT(string name, int group, int scores[]) {
 	this->name = name;
 	this->group = group;
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < scoresCount; i++)
 		this->scores[i] = scores[i];
 }
 
@@ -49,7 +49,7 @@ int* STUDENT::GetScores() {
 double STUDENT::GetAverage() {
 	double average = 0;
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < scoresCount; i++)
 		average += scores[i];
 
 	return average / 5.0;
@@ -65,7 +65,7 @@ void STUDENT::SetGroup(int group) {
 }
 
 void STUDENT::SetScores(int* scores) {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < scoresCount; i++)
 		this->scores[i] = scores[i];
 }
 
@@ -77,7 +77,7 @@ STUDENT& STUDENT::operator=(const STUDENT & student) {
 	name = student.name;
 	group = student.group;
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < scoresCount; i++)
 		scores[i] = student.scores[i];
 
 	return *this;
@@ -91,6 +91,7 @@ STUDENT::~STUDENT() {
 // считывание из потока
 std::istream& operator>>(std::istream & is, STUDENT & student) {
 	cout << "Enter name: ";
+	cin.ignore();
 	getline(is, student.name); // считыванием имя
 
 	cout << "Enter group: ";
@@ -105,7 +106,7 @@ std::istream& operator>>(std::istream & is, STUDENT & student) {
 	bool crash = false;
 
 	// считываем оценки
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < scoresCount; i++) {
 		is >> student.scores[i];
 
 		if (student.scores[i] < 1 || student.scores[i] > 5)
@@ -126,9 +127,10 @@ ostream& operator<<(ostream & os, const STUDENT & student) {
 	os << "Grop: " << student.group << endl;
 	os << "Scores: ";
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < scoresCount; i++)
 		os << student.scores[i] << " ";
 
 	os << endl;
 
 	return os;
+}
